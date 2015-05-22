@@ -1,17 +1,17 @@
 # TODO:
 # - runtime Requires if any
-%define		kdeframever	5.4
+%define		kdeframever	5.10
 %define		qtver		5.3.2
 %define		kfname		kcompletion
 
 Summary:	String completion framework
 Name:		kf5-%{kfname}
-Version:	5.4.0
+Version:	5.10.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	816227f5a9e2f06792cce31d544e877f
+# Source0-md5:	f42f8fc10cb35cdc6ffd87e6c5621bfd
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
@@ -67,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C build/ install \
         DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{kfname}5_qt --with-qm
+%find_lang %{kfname}5_qt --with-qm --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %ghost %{_libdir}/libKF5Completion.so.5
-%attr(755,root,root) %{_libdir}/libKF5Completion.so.5.4.0
+%attr(755,root,root) %{_libdir}/libKF5Completion.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
