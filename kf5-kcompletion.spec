@@ -1,17 +1,17 @@
 # TODO:
 # - runtime Requires if any
-%define		kdeframever	5.48
-%define		qtver		5.4.0
+%define		kdeframever	5.53
+%define		qtver		5.9.0
 %define		kfname		kcompletion
 
 Summary:	String completion framework
 Name:		kf5-%{kfname}
-Version:	5.48.0
+Version:	5.53.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	cdd0dda89fd39329e7a3e804769a9ce2
+# Source0-md5:	113a86c053589b02024fe2e2052968b1
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
