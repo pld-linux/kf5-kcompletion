@@ -1,17 +1,17 @@
 # TODO:
 # - runtime Requires if any
-%define		kdeframever	5.67
+%define		kdeframever	5.79
 %define		qtver		5.9.0
 %define		kfname		kcompletion
 
 Summary:	String completion framework
 Name:		kf5-%{kfname}
-Version:	5.67.0
+Version:	5.79.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	eb09a60dd4b5753e2aeaa8087efa4bb4
+# Source0-md5:	7ce37448704e52f833bf8745e2da1735
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
@@ -20,11 +20,10 @@ BuildRequires:	Qt5Test-devel >= %{qtver}
 BuildRequires:	Qt5Widgets-devel >= %{qtver}
 BuildRequires:	Qt5Xml-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
-BuildRequires:	kf5-kconfig-devel >= %{version}
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
+BuildRequires:	kf5-kconfig-devel >= %{version}
 BuildRequires:	kf5-kwidgetsaddons-devel >= %{version}
 BuildRequires:	ninja
-BuildRequires:	polkit-qt-1-devel
 BuildRequires:	qt5-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	tar >= 1:1.22
@@ -82,6 +81,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md
 %attr(755,root,root) %ghost %{_libdir}/libKF5Completion.so.5
 %attr(755,root,root) %{_libdir}/libKF5Completion.so.*.*
+%attr(755,root,root) %{_libdir}/qt5/plugins/designer/kcompletion5widgets.so
+%{_datadir}/qlogging-categories5/kcompletion.categories
 
 %files devel
 %defattr(644,root,root,755)
