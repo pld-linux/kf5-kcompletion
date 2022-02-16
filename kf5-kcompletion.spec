@@ -1,17 +1,17 @@
 # TODO:
 # - runtime Requires if any
-%define		kdeframever	5.90
+%define		kdeframever	5.91
 %define		qtver		5.15.2
 %define		kfname		kcompletion
 
 Summary:	String completion framework
 Name:		kf5-%{kfname}
-Version:	5.90.0
+Version:	5.91.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	79a6f41f4d018609708e9d5a5eaf6c6a
+# Source0-md5:	e4ad9f872cddaa3deef16fcc202e8b53
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= %{qtver}
@@ -77,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kfname}5_qt.lang
 %defattr(644,root,root,755)
 %doc README.md
-%attr(755,root,root) %ghost %{_libdir}/libKF5Completion.so.5
+%ghost %{_libdir}/libKF5Completion.so.5
 %attr(755,root,root) %{_libdir}/libKF5Completion.so.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/designer/kcompletion5widgets.so
 %{_datadir}/qlogging-categories5/kcompletion.categories
@@ -85,7 +85,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/KF5/KCompletion
-%{_includedir}/KF5/kcompletion_version.h
 %{_libdir}/cmake/KF5Completion
 %{_libdir}/libKF5Completion.so
 %{qt5dir}/mkspecs/modules/qt_KCompletion.pri
