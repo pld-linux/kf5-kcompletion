@@ -3,36 +3,36 @@
 %bcond_with	tests		# build with tests
 # TODO:
 # - runtime Requires if any
-%define		kdeframever	5.249.0
+%define		kdeframever	5.114
 %define		qtver		5.15.2
 %define		kfname		kcompletion
 
 Summary:	String completion framework
 Name:		kf5-%{kfname}
-Version:	5.249.0
-Release:	0.1
+Version:	5.114.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	2e7b7f1989fe8d15464b94d812d394f1
+Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	2bb424ebc0650b338f927ed72966ff0b
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Test-devel >= %{qtver}
-BuildRequires:	Qt6Widgets-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Test-devel >= %{qtver}
+BuildRequires:	Qt5Widgets-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	kf5-kconfig-devel >= %{version}
 BuildRequires:	kf5-kwidgetsaddons-devel >= %{version}
 BuildRequires:	ninja
-BuildRequires:	qt6-linguist >= %{qtver}
+BuildRequires:	qt5-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	Qt6Widgets >= %{qtver}
+Requires:	Qt5Widgets >= %{qtver}
 Requires:	kf5-dirs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt6dir		%{_libdir}/qt6
+%define		qt5dir		%{_libdir}/qt5
 
 %description
 This class offers "auto-completion", "manual-completion" or "shell
@@ -45,7 +45,7 @@ Summary:	Header files for %{kfname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kfname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	Qt6Widgets-devel >= %{qtver}
+Requires:	Qt5Widgets-devel >= %{qtver}
 Requires:	cmake >= 3.16
 
 %description devel
@@ -74,7 +74,7 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
-%find_lang %{kfname}6_qt --with-qm --all-name --with-kde
+%find_lang %{kfname}5_qt --with-qm --all-name --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,16 +82,17 @@ rm -rf $RPM_BUILD_ROOT
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f %{kfname}6_qt.lang
+%files -f %{kfname}5_qt.lang
 %defattr(644,root,root,755)
 %doc README.md
-%ghost %{_libdir}/libKF6Completion.so.6
-%attr(755,root,root) %{_libdir}/libKF6Completion.so.*.*
-%attr(755,root,root) %{_libdir}/qt6/plugins/designer/kcompletion6widgets.so
-%{_datadir}/qlogging-categories6/kcompletion.categories
+%ghost %{_libdir}/libKF5Completion.so.5
+%attr(755,root,root) %{_libdir}/libKF5Completion.so.*.*
+%attr(755,root,root) %{_libdir}/qt5/plugins/designer/kcompletion5widgets.so
+%{_datadir}/qlogging-categories5/kcompletion.categories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF6/KCompletion
-%{_libdir}/cmake/KF6Completion
-%{_libdir}/libKF6Completion.so
+%{_includedir}/KF5/KCompletion
+%{_libdir}/cmake/KF5Completion
+%{_libdir}/libKF5Completion.so
+%{qt5dir}/mkspecs/modules/qt_KCompletion.pri
